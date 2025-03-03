@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ssc:StateChart xmlns:ssc="http://www.sinelabore.com/SSC/1_0" Version="1.0">
+  <!--Command line options: -p ssc -E sm.xml -->
+  <!--This file is generated - do not edit manually-->
+  <!--Generated on: Sat Mar 20 21:42:36 CET 2021 / Version 5.0.6b3-->
+  <ssc:Dimensions H="787" W="1200" BA="51" DW="585" NO="537" TV="180" />
+  <ssc:Header>#include &lt;stdint.h&gt;
+#include &lt;stdbool.h&gt;
+#include "sm_ext.h"
+#include "user_defined_event.h"
+#include "sm.h"
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "timers.h"
+#include "semphr.h"
+
+extern TimerHandle_t timerHandle;</ssc:Header>
+  <ssc:Action />
+  <ssc:StateHeader />
+  <ssc:InitState Id="00e45371-d30e-409e-9cb2-29f27b272c62">
+    <ssc:Transition FromState="00e45371-d30e-409e-9cb2-29f27b272c62" ToState="SA" />
+  </ssc:InitState>
+  <ssc:State Name="SA">
+    <ExitCode>printf("Leaving SA\n");</ExitCode>
+    <EntryCode>printf("Entering SA\n");</EntryCode>
+    <ssc:Transition Event="evTimeout" FromState="SA" ToState="SB" Action="printf(&quot;evTimeout with counter=%d\n&quot;,userData-&gt;counter);" />
+  </ssc:State>
+  <ssc:State Name="SB">
+    <ExitCode>printf("Leaving SB\n");</ExitCode>
+    <EntryCode>printf("Entering SB\n");</EntryCode>
+    <ssc:Transition Event="evTimeout" FromState="SB" ToState="SA" Action="printf(&quot;evTimeout with counter=%d\n&quot;,userData-&gt;counter);" />
+  </ssc:State>
+</ssc:StateChart>
